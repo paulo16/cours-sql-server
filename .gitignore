@@ -1,0 +1,21 @@
+# Fichiers Systèmes OS
+.DS_Store
+Thumbs.db
+
+# VS Code - Fichiers de configuration utilisateur ou temporaires
+.vscode/
+*.code-workspace
+.history/
+
+# Environnement et Secrets (Très important pour ne pas commiter de mots de passe)
+.env
+
+# Dossiers de données Docker (si vous utilisez des volumes locaux)
+**/data/
+**/mssql/
+**/backups/
+*.mdf
+*.ldf
+
+# Logs
+*.log

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  sql-server:
+    # Image officielle pour SQL Server 2022
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    
+    # Nom du conteneur pour faciliter les commandes
+    container_name: sql_server_2022
+    
+    # Nom d'hôte interne au réseau Docker
+    hostname: sqlserver
+    
+    # Redémarre automatiquement le conteneur s'il plante ou si Docker redémarre
+    restart: unless-stopped
+    
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=MotDePasseFort123! # Attention à la complexité du mot de passe !
+      - MSSQL_PID=Developer # Spécifie l'édition Developer (gratuite en dev)
+    
+    ports:
+      - "1433:1433" # Port Hôte : Port Conteneur
+    
+    volumes:
+      - sqlvolume:/var/opt/mssql # Utilisation d'un volume nommé (plus stable sur Windows)
+
+volumes:
+  sqlvolume:
